@@ -3,7 +3,7 @@ import groq from "groq";
 import { PortableText } from "@portabletext/react";
 
 import { urlFor } from "../../lib/sanity";
-import { getClient } from "../../lib/sanity-serve";
+import { sanityClient } from "../../lib/sanity-serve";
 import Tag from "../../components/Tag";
 
 const PostComponents = {
@@ -65,7 +65,7 @@ const query = groq`
 `;
 
 export async function getStaticPaths() {
-	const paths = await getClient(false).fetch(groq`*[_type == "post" && defined(slug.current)][].slug.current`);
+	const paths = await sanityClient.fetch(groq`*[_type == "post" && defined(slug.current)][].slug.current`);
 
 	return {
 		paths: paths.map((slug) => ({ params: { slug } })),
@@ -74,7 +74,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-	const postData = await getClient(preview).fetch(query, { slug: params.slug });
+	const postData = await sanityClient.fetch(query, { slug: params.slug });
 
 	return {
 		props: {
