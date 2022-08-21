@@ -36,8 +36,8 @@ a {
 
 .posts-container {
 	display: flex;
+	align-items: flex-start;
 	flex-wrap: wrap;
-	justify-content: center;
 }
 
 .post-container {
@@ -77,4 +77,75 @@ a {
 
 .avatar {
 	border-radius: 50%;
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.pagination__left,
+.pagination__right {
+	font-family: inherit;
+	background-color: transparent;
+	text-decoration: none;
+	color: var(--main-text);
+	border: none;
+	padding: 0;
+	font-size: 20px;
+	font-weight: 600;
+	outline: none;
+	cursor: pointer;
+}
+
+.pagination__left:focus,
+.pagination__right:focus {
+	box-shadow: var(--outline);
+}
+
+.pagination__left {
+	margin-right: 20px;
+}
+
+.pagination__right {
+	margin-left: 20px;
+}
+
+.pagination__disable {
+	color: hsl(0, 0%, 50%);
+	pointer-events: none;
+}
+
+.pagination__numbers {
+	display: flex;
+	gap: 10px;
+}
+
+.pagination__number {
+	font-family: inherit;
+	font-size: 18px;
+	background-color: transparent;
+	border: none;
+	color: var(--main-text);
+	text-decoration: none;
+	padding: 8px;
+	outline: none;
+	cursor: pointer;
+}
+
+.pagination__number:focus {
+	box-shadow: var(--outline);
+}
+
+.pagination__number--active {
+	width: 36px;
+	height: 36px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #ffffff;
+	background-color: #171c26;
+	border-radius: 50%;
+	pointer-events: none;
 }
